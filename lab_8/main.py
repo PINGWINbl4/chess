@@ -58,3 +58,7 @@ if figure == 4:
     else:
         print('фигура не угражает клетке')
         print('программа не может написать ход для нападения')
+
+log = [x1,y1,x2,y2,figure]
+with open("log.txt","w") as f:
+    f.write(str(log))
