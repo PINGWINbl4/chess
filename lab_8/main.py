@@ -1,4 +1,6 @@
+from loguru import logger
 print('значения координат находятся в диапозоне от 1 до 8')
+logger.add("log.log", format="{time} {level} {message}", level="DEBUG")
 # ввод всех переменных
 while True:
     try:
@@ -8,14 +10,16 @@ while True:
         y2 = int(input('Введите y2 '))
         if not(x1<9 and x2<9 and y1<9 and y2<9 and x1>0 and x2>0 and y1>0 and y2>0):
             print('невозможная координата')
+            logger.error('невозможная координата', x1, y1, x2, y2)
             continue
         figure = int(input('Введите номер фигуры\n(1-ладья    2-слон      3-ферзь   4-конь) '))
-        if figure>4:
+        if figure > 4:
             print('фигуры под таким номером нет')
         elif figure == 4:
             print("Для фигуры конь не доступны некоторрые функции программы ")
         break
     except(Exception):
+        logger.error('Ввод некорректен')
         print('Ввод некорректен')
 
 # цвет клеток
@@ -59,6 +63,3 @@ if figure == 4:
         print('фигура не угражает клетке')
         print('программа не может написать ход для нападения')
 
-log = [x1,y1,x2,y2,figure]
-with open("log.txt","w") as f:
-    f.write(str(log))
