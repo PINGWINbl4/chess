@@ -63,3 +63,8 @@ if figure == 4:
         print('фигура не угражает клетке')
         print('программа не может написать ход для нападения')
 
+logger.info(str(x1))
+logger.info(str(y1))
+logger.info(str(x2))
+logger.info(str(y2))
+logger.info(str(figure))
